@@ -14,7 +14,7 @@ const LunarInfoCard = () => {
   const lunarMonth = lunarDate.getMonthInChinese();
   const lunarDay = lunarDate.getDayInChinese();
 
-  // 宜忌，每日宜忌指当天适合做什么，不适合做什么
+  // Daily taboos refer to what is suitable and unsuitable to do on that day.
   const yiList = lunarDate.getDayYi();
 
   const jiList = lunarDate.getDayJi();
@@ -46,22 +46,22 @@ const LunarInfoCard = () => {
   return (
     <InfoCard className='flex gap-4 md:gap-10 dark:text-zinc-200'>
       <div className='flex flex-col gap-2 h-fit text-nowrap shrink-0'>
-        <span className='text-lg'>{`${lunarMonth}月${lunarDay}`}</span>
+        <span className='text-lg'>{`${lunarMonth}Moon${lunarDay}`}</span>
         <div className='flex gap-2 text-sm text-nowrap'>
-          <span>{`${yearInGanZhi}年`}</span>
+          <span>{`${yearInGanZhi}Year`}</span>
           <span>{animal}</span>
         </div>
       </div>
       <div className='flex flex-col justify-center gap-4 overflow-hidden text-nowrap'>
         <div className='flex items-center gap-2 text-sm md:gap-4'>
           <span className='inline-block w-4 text-xs text-center border border-blue-500 aspect-square'>
-            宜
+            Should
           </span>
           {renderList(yiList)}
         </div>
         <div className='flex items-center gap-2 text-sm md:gap-4'>
           <span className='inline-block w-4 text-xs text-center border border-gray-400 aspect-square'>
-            忌
+            Avoid
           </span>
           {renderList(jiList)}
         </div>

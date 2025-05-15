@@ -15,13 +15,13 @@ export const getBadgeText = (day: Day, customBadge?: string) => {
     return customBadge;
   }
   if (day.dayType === DAY_TYPE.REST_DAY) {
-    return '休';
+    return 'stop';
   }
   if (day.dayType === DAY_TYPE.WORKDAY) {
-    return '班';
+    return 'class';
   }
   if (day.isToday) {
-    return '今';
+    return 'now';
   }
   return '';
 };

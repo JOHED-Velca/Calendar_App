@@ -8,7 +8,7 @@ const WeekdayHeader = ({
   firstDayOfWeek: number;
   markWeekend: boolean;
 }) => {
-  // 根据 firstDayOfWeek 的值来调整 days Map 的顺序
+  // Adjust the order of the days Map according to the value of firstDayOfWeek
   const adjustedDays = new Map([
     ...Array.from(days).slice(firstDayOfWeek),
     ...Array.from(days).slice(0, firstDayOfWeek),

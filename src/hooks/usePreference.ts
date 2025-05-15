@@ -8,13 +8,13 @@ export enum FirstDayOfWeek {
 }
 
 type Preference = {
-  // 显示非本月的日期
+  // Display dates outside this month
   showExtraDays: boolean;
-  // 每周的第一天是周几
+  // What day is the first day of the week?
   firstDayOfWeek: FirstDayOfWeek;
-  // 显示日期底部的内容
+  // Display the content at the bottom of the date
   showDateContent: boolean;
-  // 是否标记周末
+  // Mark weekends
   markWeekend: boolean;
   desktopLayout: 'horizontal' | 'vertical';
 };
@@ -39,7 +39,7 @@ const preferenceAtom = atomWithStorage<Preference>(
 export const usePreference = () => {
   const [storedPreference, setPreference] = useAtom(preferenceAtom);
 
-  // 合并默认值和存储的值，以防止新增加的配置项尚未被存储导致的问题
+  // Merge default values ​​and stored values ​​to prevent problems caused by newly added configuration items that have not yet been stored
   const preference = useMemo(() => {
     return {
       ...initialPreference,

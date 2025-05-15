@@ -1,36 +1,36 @@
-import { holidayDetails } from '@/configs/holidays';
+// import { holidayDetails } from '@/configs/holidays';
 import { useCustomDay } from '@/hooks/useCustomDay';
 import clsxm from '@/libs/clsxm';
 import { getBadgeText } from '@/libs/day';
 import DateComponent from './DateComponent';
 import { Day } from '@/interfaces/day';
 
-const getContent = (day: Day, customContent?: string) => {
-  if (customContent !== undefined) {
-    return customContent;
-  }
+// const getContent = (day: Day, customContent?: string) => {
+//   if (customContent !== undefined) {
+//     return customContent;
+//   }
 
-  if (day.holiday) {
-    return holidayDetails[day.holiday].chinese;
-  }
+//   if (day.holiday) {
+//     return holidayDetails[day.holiday].chinese;
+//   }
 
-  if (day.solarTerm) {
-    return day.solarTerm;
-  }
+//   if (day.solarTerm) {
+//     return day.solarTerm;
+//   }
 
-  if (day.festivals.length > 0) {
-    return day.festivals[0];
-  }
+//   if (day.festivals.length > 0) {
+//     return day.festivals[0];
+//   }
 
-  return day.lunarDate;
-};
+//   return day.lunarDate;
+// };
 
 const DateContainer = ({
   day,
   markWeekend,
   isSelected,
   disabled,
-  showContent,
+  // showContent,
   highlightToday,
   isCurrentMonth,
   dimNonCurrentMonth,
@@ -43,18 +43,16 @@ const DateContainer = ({
   showContent?: boolean;
   highlightToday?: boolean;
   isCurrentMonth?: boolean;
-  // 添加一个参数决定不是当前月份的日期是否半透明
   dimNonCurrentMonth?: boolean;
   onClick?: () => void;
 }) => {
   const { date } = day;
   const { customDay } = useCustomDay(date);
   const { isToday, isRestDay, isWeekend, isWorkDay } = day;
-  const { theme, badge: customBadge, content: customContent } = customDay;
+  const { theme, badge: customBadge,  } = customDay;
 
   const badgeText = getBadgeText(day, customBadge);
 
-  const contentText = showContent ? getContent(day, customContent) : '';
 
   const showBadge =
     (isToday && highlightToday && badgeText !== '') ||
@@ -76,7 +74,6 @@ const DateContainer = ({
     <DateComponent
       key={date.toString()}
       date={date}
-      content={contentText}
       badgeText={badgeText}
       showBadge={showBadge}
       className={clsxm(

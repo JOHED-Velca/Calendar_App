@@ -1,7 +1,7 @@
 import {
   CrossCircle,
   Settings,
-  Github,
+  // Github,
   LayoutVertical,
   LayoutHorizontal,
 } from '@/assets/icons';
@@ -29,8 +29,8 @@ const SettingPage = ({
   } = usePreference();
 
   const options = [
-    { value: FirstDayOfWeek.Monday, label: '周一' },
-    { value: FirstDayOfWeek.Sunday, label: '周日' },
+    { value: FirstDayOfWeek.Monday, label: 'on Monday' },
+    { value: FirstDayOfWeek.Sunday, label: 'Sunday' },
   ];
 
   const handleOptionChange = (value: string | number) => {
@@ -52,7 +52,7 @@ const SettingPage = ({
     >
       <div className='relative flex items-center justify-end px-2 py-2 text-center bg-slate-100 dark:bg-zinc-600'>
         <span className='absolute py-2 text-xs text-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 md:text-sm'>
-          设置
+        set up
         </span>
         <CrossCircle
           className='text-gray-500 transition-all duration-200 cursor-pointer size-4 md:size-6 hover:text-gray-700 hover:rotate-90 dark:stroke-gray-400'
@@ -61,22 +61,22 @@ const SettingPage = ({
       </div>
       <div className='flex flex-col flex-1 gap-4 p-4 text-sm'>
         <div className='flex items-center justify-between'>
-          <span>标记周末</span>
+          <span>Mark the weekend</span>
           <Checkbox checked={markWeekend} onChange={toggleMarkWeekend} />
         </div>
         <div className='flex items-center justify-between'>
-          <span>显示非本月日期</span>
+          <span>Display dates outside this month</span>
           <Checkbox checked={showExtraDays} onChange={toggleShowExtraDays} />
         </div>
         <div className='flex items-center justify-between'>
-          <span>显示日期底部内容</span>
+          <span>Display date bottom content</span>
           <Checkbox
             checked={showDateContent}
             onChange={toggleShowDateContent}
           />
         </div>
         <div className='flex items-center justify-between'>
-          <span>一周的开始</span>
+          <span>The beginning of the week</span>
           <RadioButtonGroup
             value={firstDayOfWeek}
             options={options}
@@ -131,7 +131,7 @@ export const Footer = () => {
     <div className='relative flex items-center justify-between h-8 md:h-10'>
       <div className='relative flex items-center h-full px-4 py-1 overflow-hidden text-sm rounded-full cursor-default group bg-slate-100 dark:bg-black/40 dark:text-zinc-200'>
         <span className='transition-all duration-200 group-hover:-translate-y-full group-hover:opacity-0'>
-          光阴荏苒，日月如梭
+          HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         </span>
         <span className='absolute transition-all duration-200 -translate-x-1/2 translate-y-full opacity-0 left-1/2 text-nowrap group-hover:translate-y-0 group-hover:opacity-100'>
           A Project By{' '}
@@ -146,11 +146,11 @@ export const Footer = () => {
       </div>
       <div className='flex gap-4 px-4 py-1 rounded-full bg-slate-100 dark:bg-black/40'>
         <a
-          href='https://github.com/xyxc0673/calendar-remark'
+          href=''
           target='_blank'
           className='flex items-center justify-center transition-all duration-200 border border-transparent rounded-lg cursor-pointer size-6 md:size-8 group hover:bg-white hover:border-slate-500 dark:hover:bg-zinc-600'
         >
-          <Github className='size-4 md:size-6 dark:stroke-zinc-400' />
+          {/* <Github className='size-4 md:size-6 dark:stroke-zinc-400' /> */}
         </a>
         <LayoutToggle />
         <ThemeToggle />

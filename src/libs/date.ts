@@ -10,15 +10,15 @@ import dayjs from 'dayjs';
 import { Lunar, Solar } from 'lunar-typescript';
 
 export const getPercentageOfYear = (date: Date): number => {
-  const startOfYear = new Date(date.getFullYear(), 0, 1); // 当年的第一天
-  const endOfYear = new Date(date.getFullYear(), 11, 31); // 当年的最后一天
+  const startOfYear = new Date(date.getFullYear(), 0, 1); // The first day of the year
+  const endOfYear = new Date(date.getFullYear(), 11, 31); // The last day of the year
 
-  const totalMilliseconds = endOfYear.getTime() - startOfYear.getTime(); // 当年的总毫秒数
-  const elapsedMilliseconds = date.getTime() - startOfYear.getTime(); // 已过去的毫秒数
+  const totalMilliseconds = endOfYear.getTime() - startOfYear.getTime(); // Total number of milliseconds in the current year
+  const elapsedMilliseconds = date.getTime() - startOfYear.getTime(); // The number of milliseconds that have passed
 
-  const percentage = (elapsedMilliseconds / totalMilliseconds) * 100; // 计算百分比
+  const percentage = (elapsedMilliseconds / totalMilliseconds) * 100; // Calculating Percentages
 
-  return Math.round(percentage * 100) / 100; // 返回百分比，保留两位小数
+  return Math.round(percentage * 100) / 100; // Returns the percentage with two decimal places
 };
 
 export const getWorkday = (date: Date) => {
@@ -76,7 +76,7 @@ export const getLunarDate = (date: Date) => {
   const lunarDate = Lunar.fromDate(date);
 
   if (lunarDate.getDay() === 1) {
-    return `${lunarDate.getMonthInChinese()}月`;
+    return `${lunarDate.getMonthInChinese()}moon`;
   }
 
   return lunarDate.getDayInChinese();
@@ -95,8 +95,8 @@ export const generateDateList = (
   let startDayOfWeek = start.getDay();
   let endDayOfWeek = end.getDay();
 
-  // 根据 firstDayOfWeek 调整开始日期和结束日期
-  // 如果 firstDayOfWeek 是周一，那么周日的值应该是 7
+  // Adjust the start and end dates based on firstDayOfWeek
+  // If firstDayOfWeek is Monday, then Sunday should have a value of 7
   if (isFirstDayOfWeekMonday) {
     if (startDayOfWeek === 0) {
       startDayOfWeek = 7;
@@ -116,7 +116,7 @@ export const generateDateList = (
 
   const dateList: Date[] = [];
 
-  // 循环生成日期列表
+  // Loop to generate a list of dates
   while (start <= end) {
     dateList.push(new Date(start));
     start.setDate(start.getDate() + 1);

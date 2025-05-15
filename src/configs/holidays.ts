@@ -16,31 +16,31 @@ export interface HolidayDetails {
 export const holidayDetails: { [key in HOLIDAY]: HolidayDetails } = {
   [HOLIDAY.NEW_YEARS_DAY]: {
     english: HOLIDAY.NEW_YEARS_DAY,
-    chinese: "元旦",
+    chinese: "New Year",
   },
   [HOLIDAY.SPRING_FESTIVAL]: {
     english: HOLIDAY.SPRING_FESTIVAL,
-    chinese: "春节",
+    chinese: "Spring Festival",
   },
   [HOLIDAY.TOMB_SWEEPING_DAY]: {
     english: HOLIDAY.TOMB_SWEEPING_DAY,
-    chinese: "清明",
+    chinese: "Qingming",
   },
   [HOLIDAY.LABOUR_DAY]: {
     english: HOLIDAY.LABOUR_DAY,
-    chinese: "劳动节",
+    chinese: "Labor Day",
   },
   [HOLIDAY.DRAGON_BOAT_FESTIVAL]: {
     english: HOLIDAY.DRAGON_BOAT_FESTIVAL,
-    chinese: "端午",
+    chinese: "Dragon Boat Festival",
   },
   [HOLIDAY.NATIONAL_DAY]: {
     english: HOLIDAY.NATIONAL_DAY,
-    chinese: "国庆节",
+    chinese: "National Day",
   },
   [HOLIDAY.MID_AUTUMN_FESTIVAL]: {
     english: HOLIDAY.MID_AUTUMN_FESTIVAL,
-    chinese: "中秋",
+    chinese: "Mid-Autumn Festival",
   },
 };
 
@@ -51,7 +51,7 @@ export enum DAY_TYPE {
 }
 
 export const holidays = new Map([
-  // 2025年法定节假日
+  // Holidays in 2025
   ["2025-01-01", HOLIDAY.NEW_YEARS_DAY],
   ["2025-01-29", HOLIDAY.SPRING_FESTIVAL],
   ["2025-04-04", HOLIDAY.TOMB_SWEEPING_DAY],
@@ -62,7 +62,7 @@ export const holidays = new Map([
 ]);
 
 export const restDays = new Map([
-  // 2024年休息日
+  // Holidays in 2024
   ["2023-12-30", HOLIDAY.NEW_YEARS_DAY],
   ["2023-12-31", HOLIDAY.NEW_YEARS_DAY],
   ["2024-02-11", HOLIDAY.SPRING_FESTIVAL],
@@ -88,7 +88,7 @@ export const restDays = new Map([
   ["2024-10-05", HOLIDAY.NATIONAL_DAY],
   ["2024-10-06", HOLIDAY.NATIONAL_DAY],
   ["2024-10-07", HOLIDAY.NATIONAL_DAY],
-  // 2025年休息日
+  // Holidays in 2025
   ["2025-01-28", HOLIDAY.SPRING_FESTIVAL],
   ["2025-01-29", HOLIDAY.SPRING_FESTIVAL],
   ["2025-01-30", HOLIDAY.SPRING_FESTIVAL],
@@ -115,7 +115,7 @@ export const restDays = new Map([
 ]);
 
 export const workdays = new Map([
-  // 2024年调休工作日
+  // Compensated working days in 2024
   ["2024-02-04", HOLIDAY.SPRING_FESTIVAL],
   ["2024-02-18", HOLIDAY.SPRING_FESTIVAL],
   ["2024-04-07", HOLIDAY.TOMB_SWEEPING_DAY],
@@ -124,7 +124,7 @@ export const workdays = new Map([
   ["2024-09-14", HOLIDAY.MID_AUTUMN_FESTIVAL],
   ["2024-09-29", HOLIDAY.NATIONAL_DAY],
   ["2024-10-12", HOLIDAY.NATIONAL_DAY],
-  // 2025年调休工作日
+  // Adjusted working days in 2025
   ["2025-01-26", HOLIDAY.SPRING_FESTIVAL],
   ["2025-02-08", HOLIDAY.SPRING_FESTIVAL],
   ["2025-04-27", HOLIDAY.LABOUR_DAY],

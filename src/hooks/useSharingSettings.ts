@@ -9,7 +9,7 @@ const useSharingSettings = () => {
   const [completeWeek, setCompleteWeek] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [showFooter, setShowFooter] = useState(true);
-  const [headerText, setHeaderText] = useState('节假日安排');
+  const [headerText, setHeaderText] = useState('Holiday Arrangements');
   const [footerText, setFooterText] = useState('Calendar Remark');
   const [showCustomArea, setShowCustomArea] = useState(false);
   const [startDate, setStartDate] = useState<Date>();

@@ -1,32 +1,32 @@
 export function downloadFromBase64(base64Data: string, filename: string) {
-  // 将base64字符串转换为Blob
+  // Convert base64 string to Blob
   const blob = base64ToBlob(base64Data);
   if (!blob) {
-    console.error('无法创建Blob对象');
+    console.error('Unable to create Blob object');
     return;
   }
 
-  // 创建一个隐藏的<a>元素用于下载
+  // Create a hidden <a> element for downloading
   const a = document.createElement('a');
   a.style.display = 'none';
   document.body.appendChild(a);
 
-  // 使用Blob对象创建一个URL，并设置为<a>元素的href属性
+  // Create a URL using the Blob object and set it as the href attribute of the <a> element
   const url = window.URL.createObjectURL(blob);
   a.href = url;
   a.download = filename;
 
-  // 触发<a>元素的点击事件以开始下载
+  // Trigger a click event on the <a> element to start downloading
   a.click();
 
-  // 清理
+  // Cleaning
   window.URL.revokeObjectURL(url);
   document.body.removeChild(a);
 }
 
-// 辅助函数：将Base64字符串转换为Blob对象
+// Helper function: Convert a Base64 string to a Blob object
 function base64ToBlob(base64: string): Blob | null {
-  // 正则表达式分割数据类型和Base64数据
+  // Regular expression to split data types and Base64 data
   const parts = base64.match(/^data:(.+);base64,(.+)$/);
   if (parts === null) {
     return null;
@@ -37,7 +37,7 @@ function base64ToBlob(base64: string): Blob | null {
   const rawLength = raw.length;
   const array = new Uint8Array(rawLength);
 
-  // 将字符转换为字节
+  // Convert characters to bytes
   for (let i = 0; i < rawLength; i++) {
     array[i] = raw.charCodeAt(i);
   }

@@ -3,11 +3,10 @@ import 'dayjs/locale/zh-cn';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import { GTMProvider } from '@elgorditosalsero/react-gtm-hook';
 import DayInfoCard from './components/DayInfoCard';
-import LunarInfoCard from './components/LunarInfoCard';
 import PlaceHolderImage from './components/PlaceHolderImage';
 import ShareModal from './components/ShareModal';
 import YearProgressCard from './components/YearProgressCard';
-import { Footer } from './views/Footer';
+// import { Footer } from './views/Footer';
 import { usePreference } from './hooks/usePreference';
 import clsxm from './libs/clsxm';
 import FullCalendar from './views/FullCalendar';
@@ -40,12 +39,11 @@ function App() {
             <FullCalendar />
             <div className='w-full md:w-[37.5rem] p-4 gap-3 flex flex-col'>
               <DayInfoCard />
-              <LunarInfoCard />
               <YearProgressCard />
               {isHorizontal && <PlaceHolderImage />}
             </div>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </GTMProvider>

@@ -3,9 +3,9 @@ import { getPercentageOfYear } from '@/libs/date';
 import { InfoCard } from './ui';
 import { isSameDay } from 'date-fns';
 
-// selectedDate 为 Date 对象，表示当前选中的日期
-// 展示当前日期的年进度，将一年分为 12 个块，每个块代表一个月
-// 其中如果当前日期在这个月内，那么这个块的背景颜色宽度根据当前日期在这个月内的进度来决定，精确到天
+// selectedDate is a Date object, indicating the currently selected date
+// Shows the year progress of the current date, dividing the year into 12 blocks, each block represents a month
+// If the current date is within this month, the background color width of this block is determined according to the progress of the current date within this month, accurate to the day.
 const YearProgressCard = () => {
   const { selectedDate } = useSelectedDate();
 
@@ -28,11 +28,11 @@ const YearProgressCard = () => {
   const getTitle = () => {
     const progressText = `${dayOfYearProgress.toFixed(2)}%`;
     if (ifIsSameDate) {
-      return `今年已经过去了${progressText}`;
+      return `THIS YEAR HAS PASSED${progressText}`;
     } else {
       return `${
         currentMonth + 1
-      }月${currentDay}日在今年的进度为${progressText}`;
+      }${currentDay}THE PROGRESS OF THE YEAR IS${progressText}`;
     }
   };
 

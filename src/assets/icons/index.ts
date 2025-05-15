@@ -4,7 +4,6 @@ export { Settings } from './Settings';
 export { CrossCircle } from './CrossCircle';
 export { Sun } from './Sun';
 export { Moon } from './Moon';
-export { Github } from './Github';
 export { PencilBox } from './PencilBox';
 export { LogoutRight } from './LogoutRight';
 export { RotateRight } from './RotateRight';

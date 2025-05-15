@@ -23,10 +23,10 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
 
     if (customDay.badge !== undefined) {
       badge = customDay.badge;
-    } else if (day.isWorkDay) {
-      badge = '班';
+    }else if (day.isWorkDay) {
+      badge = 'class';
     } else if (day.isRestDay) {
-      badge = '休';
+      badge = 'stop';
     }
 
     setBadgeValue(badge);
@@ -74,9 +74,9 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
   }, [customDay.theme, day.isWorkDay, day.isRestDay]);
 
   const options = [
-    { value: '', label: '无' },
-    { value: 'workday', label: '班' },
-    { value: 'restDay', label: '休' },
+    { value: '', label: 'none' },
+    { value: 'workday', label: 'class' },
+    { value: 'restDay', label: 'stop' },
   ];
 
   const handleUpdateTheme = (theme: string | number) => {
@@ -84,10 +84,10 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
 
     switch (theme) {
       case 'workday':
-        newBadge = '班';
+        newBadge = 'class';
         break;
       case 'restDay':
-        newBadge = '休';
+        newBadge = 'stop';
         break;
       default:
         newBadge = '';
@@ -100,7 +100,7 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
     });
   };
 
-  // 限制为一个中文或者数字或者英文
+  // Limit to one character, number
   const validateBadgeValue = (value: string) => {
     if (compositionFlag.current) {
       setBadgeValue(value);
@@ -115,7 +115,7 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
     if (reg.test(value)) {
       newValue = value;
     } else {
-      // 截取第一个字符，用于一次性输入多个字符的情况
+      // Intercept the first character, used for entering multiple characters at one time
       newValue = value.slice(0, 1);
     }
     setBadgeValue(newValue);
@@ -154,7 +154,7 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
     >
       <Divider direction='horizontal' className='my-3' />
       <div className='flex items-center h-full gap-3'>
-        <span className='hidden text-nowrap md:inline-block'>日期底部内容</span>
+        <span className='hidden text-nowrap md:inline-block'>Date bottom content</span>
         <Input
           type='text'
           placeholder='例如：春节'
@@ -163,11 +163,11 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
           allowClear
           onChange={handleUpdateContent}
         />
-        <span className='hidden text-nowrap md:inline-block'>标记</span>
+        <span className='hidden text-nowrap md:inline-block'>mark</span>
         <Input
           name='badge'
           type='text'
-          placeholder='例如：休'
+          placeholder='For example: Hugh'
           value={badgeValue}
           allowClear
           onChange={handleUpdateBadge}
@@ -186,7 +186,7 @@ const EditArea = ({ date, isEditing }: { date: Date; isEditing: boolean }) => {
 
 const DayInfoCard = () => {
   const { selectedDate } = useSelectedDate();
-  const formattedDate = dayjs(selectedDate).format('YYYY年MM月DD日');
+  const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
   const weekDay = dayjs(selectedDate).format('dddd');
   const weekNumber = dayjs(selectedDate).week();
   const [isEditing, setIsEditing] = useState(false);
@@ -196,7 +196,7 @@ const DayInfoCard = () => {
   return (
     <InfoCard className='flex flex-col dark:text-zinc-200'>
       <div className='relative flex items-center justify-end'>
-        <span className='absolute text-sm -translate-x-1/2 left-1/2 text-nowrap md:text-base'>{`${formattedDate} ${weekDay} 第${weekNumber}周`}</span>
+        <span className='absolute text-sm -translate-x-1/2 left-1/2 text-nowrap md:text-base'>{`${formattedDate} ${weekDay} No.${weekNumber}week`}</span>
         <div className='flex gap-2'>
           <button
             className={clsxm(

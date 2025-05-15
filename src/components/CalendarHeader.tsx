@@ -10,11 +10,11 @@ import { isAfter, isSameDay } from 'date-fns';
 const CalendarHeader = () => {
   const yearList = Array.from({ length: 151 }, (_, i) => ({
     value: i + 1900,
-    label: `${i + 1900}年`,
+    label: `${i + 1900}year`,
   }));
   const monthList = Array.from({ length: 12 }, (_, i) => ({
     value: i + 1,
-    label: `${i + 1}月`,
+    label: `${i + 1}month`,
   }));
   const { today, currentYear, currentMonth, setCurrentMonth, setCurrentYear } =
     useCalendar();
@@ -53,7 +53,7 @@ const CalendarHeader = () => {
       <Dropdown
         options={holidayList}
         value={selectedHoliday}
-        placeholder='假期'
+        placeholder='holiday'
         className='absolute left-3 min-w-9'
         onChange={navigateToHoliday}
       />
