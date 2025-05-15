@@ -1,8 +1,8 @@
-import {
-  workdays,
-} from '@/configs/holidays';
+// import {
+//   workdays,
+// } from '@/configs/holidays';
 import { FirstDayOfWeek } from '@/hooks/usePreference';
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 
 export const getPercentageOfYear = (date: Date): number => {
   const startOfYear = new Date(date.getFullYear(), 0, 1); // The first day of the year
@@ -16,11 +16,11 @@ export const getPercentageOfYear = (date: Date): number => {
   return Math.round(percentage * 100) / 100; // Returns the percentage with two decimal places
 };
 
-export const getWorkday = (date: Date) => {
-  const dateStr = dayjs(date).format('YYYY-MM-DD');
-  const holiday = workdays.get(dateStr);
-  return holiday;
-};
+// export const getWorkday = (date: Date) => {
+//   const dateStr = dayjs(date).format('YYYY-MM-DD');
+//   const holiday = workdays.get(dateStr);
+//   return holiday;
+// };
 
 export const generateDateList = (
   startDate: Date,

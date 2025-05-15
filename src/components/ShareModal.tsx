@@ -219,13 +219,13 @@ const ShareModal = () => {
               className='px-3 py-1 text-sm text-white transition-all duration-200 bg-red-500 rounded-md hover:bg-red-600 md:text-base'
               onClick={handleClose}
             >
-              关闭
+              close
             </button>
             <button
               className='px-3 py-1 text-sm text-white transition-all duration-200 bg-blue-500 rounded-md hover:bg-blue-600 md:text-base'
               onClick={() => handleSave()}
             >
-              保存图片
+              Save image
             </button>
           </div>
         </div>
