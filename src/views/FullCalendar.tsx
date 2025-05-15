@@ -1,6 +1,5 @@
 import Calendar from '@/components/Calendar';
 import CalendarHeader from '@/components/CalendarHeader';
-import RecentHoliday from '@/components/RecentHoliday';
 import useCalendar from '@/hooks/useCalendar';
 import { usePreference } from '@/hooks/usePreference';
 
@@ -20,7 +19,6 @@ const FullCalendar = () => {
         showDateContent={showDateContent}
         markWeekend={markWeekend}
       />
-      <RecentHoliday />
     </div>
   );
 };
