@@ -15,13 +15,13 @@ export const getBadgeText = (day: Day, customBadge?: string) => {
     return customBadge;
   }
   if (day.dayType === DAY_TYPE.REST_DAY) {
-    return 'stop';
+    return '';
   }
   if (day.dayType === DAY_TYPE.WORKDAY) {
-    return 'class';
+    return '';
   }
   if (day.isToday) {
-    return 'now';
+    return '';
   }
   return '';
 };
