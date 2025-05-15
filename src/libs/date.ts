@@ -1,13 +1,8 @@
 import {
-  HOLIDAY,
-  holidayDetails,
-  holidays,
-  restDays,
   workdays,
 } from '@/configs/holidays';
 import { FirstDayOfWeek } from '@/hooks/usePreference';
 import dayjs from 'dayjs';
-import { Lunar, Solar } from 'lunar-typescript';
 
 export const getPercentageOfYear = (date: Date): number => {
   const startOfYear = new Date(date.getFullYear(), 0, 1); // The first day of the year
@@ -25,61 +20,6 @@ export const getWorkday = (date: Date) => {
   const dateStr = dayjs(date).format('YYYY-MM-DD');
   const holiday = workdays.get(dateStr);
   return holiday;
-};
-
-export const getSolarTerm = (date: Date) => {
-  const lunarDate = Lunar.fromDate(date);
-  const solarTerm = lunarDate.getJieQi();
-  return solarTerm;
-};
-
-export const getRestDay = (date: Date) => {
-  const dateStr = dayjs(date).format('YYYY-MM-DD');
-  const holiday = restDays.get(dateStr);
-  return holiday;
-};
-
-export const getFestivals = (date: Date) => {
-  const solarDate = Solar.fromDate(date);
-  const lunarDate = Lunar.fromDate(date);
-
-  const solarFestivals = solarDate.getFestivals();
-  const lunarFestivals = lunarDate.getFestivals();
-
-  const festival = [...lunarFestivals, ...solarFestivals];
-
-  return festival;
-};
-
-export const getHoliday = (date: Date) => {
-  const dateStr = dayjs(date).format('YYYY-MM-DD');
-  const holiday = holidays.get(dateStr);
-  return holiday;
-};
-
-export type HolidaySelect = {
-  value: HOLIDAY;
-  label: string;
-  date: string;
-};
-
-export const getHolidays = (): HolidaySelect[] => {
-  const result = Array.from(holidays).map(([date, item]) => ({
-    value: item,
-    label: holidayDetails[item].chinese,
-    date: date,
-  }));
-  return result;
-};
-
-export const getLunarDate = (date: Date) => {
-  const lunarDate = Lunar.fromDate(date);
-
-  if (lunarDate.getDay() === 1) {
-    return `${lunarDate.getMonthInChinese()}moon`;
-  }
-
-  return lunarDate.getDayInChinese();
 };
 
 export const generateDateList = (

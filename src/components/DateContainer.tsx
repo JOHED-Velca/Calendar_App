@@ -48,8 +48,8 @@ const DateContainer = ({
 }) => {
   const { date } = day;
   const { customDay } = useCustomDay(date);
-  const { isToday, isRestDay, isWeekend, isWorkDay } = day;
-  const { theme, badge: customBadge,  } = customDay;
+  const { isToday, isWeekend } = day;
+  const { badge: customBadge,  } = customDay;
 
   const badgeText = getBadgeText(day, customBadge);
 
@@ -58,17 +58,17 @@ const DateContainer = ({
     (isToday && highlightToday && badgeText !== '') ||
     (!isToday && badgeText !== '');
 
-  const isCustomNone = theme === '';
+  // const isCustomNone = theme === '';
 
-  const isCustomRestDay = theme === 'restDay';
+  // const isCustomRestDay = theme === 'restDay';
 
-  const isCustomWorkday = theme === 'workday';
+  // const isCustomWorkday = theme === 'workday';
 
-  const isRestDayTheme =
-    !isCustomNone && !isCustomWorkday && (theme === 'restDay' || isRestDay);
+  // const isRestDayTheme =
+  //   !isCustomNone && !isCustomWorkday && (theme === 'restDay' || isRestDay);
 
-  const isWorkdayTheme =
-    !isCustomNone && !isCustomRestDay && (theme === 'workday' || isWorkDay);
+  // const isWorkdayTheme =
+  //   !isCustomNone && !isCustomRestDay && (theme === 'workday' || isWorkDay);
 
   return (
     <DateComponent
@@ -79,22 +79,20 @@ const DateContainer = ({
       className={clsxm(
         !isSelected && !disabled && 'hover:bg-blue-100 dark:hover:bg-zinc-600',
         !isCurrentMonth && dimNonCurrentMonth && 'opacity-50',
-        ((markWeekend && isWeekend) || isRestDayTheme) &&
+        ((markWeekend && isWeekend)) &&
           'text-red-500 dark:text-red-500',
-        isRestDayTheme && 'bg-red-200 opacity-100 dark:bg-red-200',
+        // isRestDayTheme && 'bg-red-200 opacity-100 dark:bg-red-200',
         highlightToday && isToday && 'text-blue-500 dark:text-blue-500',
         isSelected && 'bg-blue-400 text-white dark:text-white dark:bg-blue-400',
         disabled && 'cursor-default'
       )}
       dateClassName={clsxm(
-        ((markWeekend && isWeekend) || isRestDayTheme) &&
+        ((markWeekend && isWeekend)) &&
           'text-red-500 dark:text-red-500',
         highlightToday && isToday && 'text-blue-500 dark:text-blue-500',
         isSelected && 'text-white dark:text-white'
       )}
       badgeClassName={clsxm(
-        isRestDayTheme && 'bg-red-500',
-        isWorkdayTheme && 'bg-blue-900',
         isToday && 'bg-blue-500'
       )}
       onClick={onClick}

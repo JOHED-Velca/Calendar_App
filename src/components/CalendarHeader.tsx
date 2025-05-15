@@ -1,41 +1,27 @@
 import { ChevronDown } from '@/assets/icons';
 import useCalendar from '@/hooks/useCalendar';
 import { useSelectedDate } from '@/hooks/useSelectedDate';
-import { useSelectedHoliday } from '@/hooks/useSelectedHoliday';
 import clsxm from '@/libs/clsxm';
-import { HolidaySelect, getHolidays } from '@/libs/date';
 import { Dropdown } from './ui';
 import { isAfter, isSameDay } from 'date-fns';
 
 const CalendarHeader = () => {
   const yearList = Array.from({ length: 151 }, (_, i) => ({
     value: i + 1900,
-    label: `${i + 1900}year`,
+    label: `${i + 1900}`,
   }));
   const monthList = Array.from({ length: 12 }, (_, i) => ({
     value: i + 1,
-    label: `${i + 1}month`,
+    label: `${i + 1} month`,
   }));
   const { today, currentYear, currentMonth, setCurrentMonth, setCurrentYear } =
     useCalendar();
   const { selectedDate, setSelectedDate } = useSelectedDate();
-  const { selectedHoliday, setSelectedHoliday } = useSelectedHoliday();
-
-  const holidayList = getHolidays();
-
-  const navigateToHoliday = (nextHoliday: HolidaySelect) => {
-    const date = new Date(nextHoliday.date);
-    setSelectedDate(date);
-    setCurrentMonth(date.getMonth());
-    setCurrentYear(date.getFullYear());
-    setSelectedHoliday(nextHoliday.value);
-  };
 
   const resetDate = () => {
     setSelectedDate(today);
     setCurrentMonth(today.getMonth());
     setCurrentYear(today.getFullYear());
-    setSelectedHoliday(undefined);
   };
 
   const showBackToToday =
@@ -50,13 +36,6 @@ const CalendarHeader = () => {
 
   return (
     <div className='relative flex items-center justify-center gap-1.5 px-3 py-2 md:gap-4 md:px-6 md:py-4 bg-slate-100 dark:bg-zinc-900/20'>
-      <Dropdown
-        options={holidayList}
-        value={selectedHoliday}
-        placeholder='holiday'
-        className='absolute left-3 min-w-9'
-        onChange={navigateToHoliday}
-      />
       <Dropdown
         options={yearList}
         value={currentYear}
@@ -84,7 +63,7 @@ const CalendarHeader = () => {
             !showBackToToday && 'rotate-0'
           )}
         />
-        今日
+        today
       </button>
     </div>
   );
